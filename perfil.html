@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css"/>
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
-  <body>
+  <body onload = "carregaperfil();">
     <div class="container-fluid">
         <div class = "row" id = "row-um-altura">
             <div class = "col-12 div-banner">
@@ -24,12 +24,18 @@
             </div>
         </div>
         <div class = "row" id = "row-dois-altura">
-            <div class = "col-6">
+            <div class = "col-6" id = "foto">
             
             </div>
-            <div class = "col-6">
+            <div class = "col-6" id = "personal">
             
             </div>
+        </div>
+        <div class = "row">
+          <div class = "col-12">
+            <h3 id = "h3-solicitacoes">Solicitações</h3>
+            <hr>
+        </div>
         </div>
         <div class = "row" id = "row-tres-altura">
             <div class = "col-12 d-flex">
@@ -61,6 +67,54 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <tr>
+                      <td>Tiger Nixon</td>
+                      <td>System Architect</td>
+                      <td>Edinburgh</td>
+                      <td>61</td>
+                      <td>2011/04/25</td>
+                      <td>$320,800</td>
+                    </tr>
+                    <tr>
+                      <td>Garrett Winters</td>
+                      <td>Accountant</td>
+                      <td>Tokyo</td>
+                      <td>63</td>
+                      <td>2011/07/25</td>
+                      <td>$170,750</td>
+                    </tr>
+                    <tr>
+                      <td>Ashton Cox</td>
+                      <td>Junior Technical Author</td>
+                      <td>San Francisco</td>
+                      <td>66</td>
+                      <td>2009/01/12</td>
+                      <td>$86,000</td>
+                    </tr>
+                    <tr>
+                      <td>Cedric Kelly</td>
+                      <td>Senior Javascript Developer</td>
+                      <td>Edinburgh</td>
+                      <td>22</td>
+                      <td>2012/03/29</td>
+                      <td>$433,060</td>
+                    </tr>
+                    <tr>
+                      <td>Airi Satou</td>
+                      <td>Accountant</td>
+                      <td>Tokyo</td>
+                      <td>33</td>
+                      <td>2008/11/28</td>
+                      <td>$162,700</td>
+                    </tr>
+                    <tr>
+                      <td>Brielle Williamson</td>
+                      <td>Integration Specialist</td>
+                      <td>New York</td>
+                      <td>61</td>
+                      <td>2012/12/02</td>
+                      <td>$372,000</td>
+                    </tr>
                   </tbody>
                   <tfoot>
                     <tr>
