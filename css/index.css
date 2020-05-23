@@ -1,0 +1,30 @@
+.form-control{
+    font-weight: bold;
+    max-width: 400px;
+    display: inline-block;
+}
+#col-form-login{
+    min-width: 10%;
+}
+#row-um-altura{
+    min-height: 120px;
+}
+#row-dois-altura{
+    min-height: 150px;
+}
+#row-tres-altura{
+    min-height: 500px;
+}
+#row-rodape-altura{
+    min-height: 150px;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #000000;
+    border-color: #000000;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #65696d;
+    border-color: #65696d;
+}

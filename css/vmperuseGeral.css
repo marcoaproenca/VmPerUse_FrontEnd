@@ -1,0 +1,21 @@
+body{
+    background-color: rgb(235, 235, 235);
+}
+img{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+div{
+    text-align: center;
+    border: black solid 1px;
+}
+.div-banner{
+    background-color: rgba(207, 207, 207, 0.404);
+}
+h1{
+    font-weight: bold;
+    padding-top: 30px;
+}
+.flex-width{
+    flex: 1 0 auto;
+}

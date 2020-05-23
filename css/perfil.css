@@ -1,0 +1,56 @@
+#row-um-altura{
+    min-height: 110px;
+}
+#row-dois-altura{
+    min-height: 220px;
+}
+#row-tres-altura{
+    min-height: 450px;
+}
+#row-rodape-altura{
+    min-height: 150px;
+}
+#col-width{
+    min-width: 5%;
+}
+.btn-outline-success {
+    position: absolute;
+    right: 83px;
+    bottom: 7px;
+    color:white;
+    background-image: none;
+    background-color: black;
+    border-color:black;
+}
+  
+.btn-outline-success:hover {
+    color: #fff;
+    background-color: gray;
+    border-color: gray;
+}
+  
+.btn-outline-success:focus, .btn-outline-success.focus {
+    -webkit-box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.btn-outline-secondary {
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    color: black;
+    background-image: none;
+    background-color: transparent;
+    border-color:black;
+}
+  
+.btn-outline-secondary:hover {
+    color: #fff;
+    background-color: gray;
+    border-color: gray;
+}
+  
+.btn-outline-secondary:focus, .btn-outline-secondary.focus {
+    -webkit-box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+}
