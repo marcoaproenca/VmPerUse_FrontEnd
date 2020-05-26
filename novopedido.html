@@ -33,16 +33,16 @@
                         <div class="slidecontainer">
                             <label id = "confg-label" class="inp-range range-1">Quantidade de vCPUs</label>
                             <p id ="config-out-p"><output id="ageOutputId1">1</output> vCPU</p>
-                            <input type="range" min="1" max="10" step="1" value="1" name="qvcpu" class = "slider" id="qvcpu" oninput="ageOutputId1.value = this.value">
+                            <input type="range" min="1" max="10" step="1" value="1" name="slider" class = "slider" id="processador" onchange="calculaCusto(this.id, this.name);" oninput="ageOutputId1.value = this.value">
                             <label id = "confg-label" class="inp-range range-2">Quantidade de Memória</label>
                             <p id = "config-out-p"><output id="ageOutputId2">4</output> GB</p>
-                            <input type="range" min="4" max="64" step="4" value="4" name="qmem" class = "slider" id="qmem" oninput="ageOutputId2.value = this.value">
+                            <input type="range" min="4" max="64" step="4" value="4" name="slider" class = "slider" id="memoria" onchange="calculaCusto(this.id, this.name);" oninput="ageOutputId2.value = this.value">
                             <label id = "confg-label" class="inp-range range-3">Tamanho do Storage</label>
                             <p id = "config-out-p"><output id="ageOutputId3">20</output> GB</p>
-                            <input type="range" min="20" max="500" step="20" value="20" name="qstg" class = "slider" id="qstg" oninput="ageOutputId3.value = this.value">
+                            <input type="range" min="20" max="500" step="20" value="20" name="slider" class = "slider" id="armazenamento" onchange="calculaCusto(this.id, this.name);" oninput="ageOutputId3.value = this.value">
                             <label id = "confg-label" class="inp-range range-4">Largura de Banda</label>
                             <p id = "config-out-p"><output id="ageOutputId4">1</output> GBits</p>
-                            <input type="range" min="100" max="1000" step="50" value="100" name="qtran" class = "slider" id="qtran" oninput="ageOutputId4.value = this.value">   
+                            <input type="range" min="100" max="1000" step="50" value="100" name="slider" class = "slider" id="rede" onchange="calculaCusto(this.id, this.name);" oninput="ageOutputId4.value = this.value">   
                         </div>
                         <p id = "rotulos-campos">Lista de Softwares</p>
                         <div id="listaSw">
@@ -58,7 +58,7 @@
             <div class = "row" id = "row-tres-altura">
                 <div class = "col-12" id = col-total>
                     <hr>
-                    <p id = "pTotal"><output id="total">R$ 0,00</output> /hr</p>
+                    <p id = "pTotal">R$ <output id="total">0,00</output>/hr</p>
                     <hr>
                 </div>
             </div>
@@ -73,7 +73,7 @@
     <script type="text/javascript" src="js/novopedido.js"> </script>
     
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>

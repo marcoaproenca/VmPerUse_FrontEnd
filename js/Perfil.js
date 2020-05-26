@@ -10,6 +10,7 @@ function carregaperfil(){
     }
     usuario = JSON.parse(userSTR);
     pedidos = usuario.pedidos;
+    console.log(usuario.id);
     document.getElementById("foto").innerHTML = templateFoto.replace("{{IMAGEMFOTO}}", usuario.linkfoto);
     document.getElementById("personal").innerHTML = templateBio.replace("{{NOME}}",usuario.nome)
                                                                .replace("{{RACF}}",usuario.racf)
@@ -23,6 +24,7 @@ function carregaperfil(){
 }
 function resSolicitacoes(res){
     var solicitacoes = res;
+    //console.log(solicitacoes);
     $(document).ready(function () {
     var table = $('#tblSolicitacao').DataTable({
             data: solicitacoes,
@@ -84,6 +86,7 @@ function resSolicitacoes(res){
     });
 }
 function format ( d ) {
+    console.log(d);
     var childRow =  '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
                         '<tr>' +
                             '<th class="th-sm">Software</th>' +
@@ -93,9 +96,9 @@ function format ( d ) {
     for(i = 0; i < d.itensSolicitacao.length; i++){
         
         var childRow = childRow + '<tr>'+
-                                        '<td>' + d.itensSolicitacao[i].software.nome + '</td>' +
-                                        '<td>' + d.itensSolicitacao[i].software.fornecedor + '</td>' +
-                                        '<td>' + d.itensSolicitacao[i].software.valor + '</td>' +
+                                        '<td>' + d.itensSolicitacao[i].componente.nome + '</td>' +
+                                        '<td>' + d.itensSolicitacao[i].componente.fornecedor + '</td>' +
+                                        '<td>' + d.itensSolicitacao[i].componente.valor + '</td>' +
                                     '</tr>';
     }
     childRow = childRow + '</table>';
