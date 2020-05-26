@@ -1,6 +1,8 @@
 function autenticar(){
     var user  = document.getElementById("textUser").value;
     var senha = document.getElementById("textSenha").value;
+    document.getElementById('textUser').value = "";
+    document.getElementById('textSenha').value ="";
     var flagEmail = user.indexOf("@");
     
     if (flagEmail == -1){

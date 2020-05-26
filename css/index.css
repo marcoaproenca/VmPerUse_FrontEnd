@@ -3,6 +3,9 @@
     max-width: 400px;
     display: inline-block;
 }
+#form-logon{
+    text-align: center;
+}
 #col-form-login{
     min-width: 10%;
 }
@@ -17,6 +20,9 @@
 }
 #row-rodape-altura{
     min-height: 150px;
+}
+#format-label{
+    font-weight: bold;
 }
 .btn-primary {
     color: #fff;

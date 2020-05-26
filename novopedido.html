@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title>VM-Per-Use: Novo Pedido</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/vmperuseGeral.css">
+        <link rel="stylesheet" href="css/novopedido.css">
+    </head>
+    <body onload="carregaitens();">
+        <div class="container-fluid">
+            <div class = "row" id = "row-um-altura">
+                <div class = "col-12 div-banner">
+                    <img src="imagens/itau-logo2.png" align = "left" width="100px">
+                    <h1>VM-Per-Use</h1>
+                </div>
+            </div>
+            <div class = "row">
+                <hr>
+                <p id = "tituloPg">Nova Solicitação</p>
+                <hr>
+            </div>
+            <div class = "row d-flex" id = "row-dois-altura">
+                <div class = "col-2">
+                </div>
+                <div class = "col-8 flex-row w-100">
+                    <form id="formPedido">
+                        <p id = "rotulos-campos">Data do Pedido: <input type="text" id="txtData" readonly="true"></p>
+                        <p id = "rotulos-campos">Itens de Configuração</p>
+                        <div class="slidecontainer">
+                            <label id = "confg-label" class="inp-range range-1">Quantidade de vCPUs</label>
+                            <p id ="config-out-p"><output id="ageOutputId1">1</output> vCPU</p>
+                            <input type="range" min="1" max="10" step="1" value="1" name="qvcpu" class = "slider" id="qvcpu" oninput="ageOutputId1.value = this.value">
+                            <label id = "confg-label" class="inp-range range-2">Quantidade de Memória</label>
+                            <p id = "config-out-p"><output id="ageOutputId2">4</output> GB</p>
+                            <input type="range" min="4" max="64" step="4" value="4" name="qmem" class = "slider" id="qmem" oninput="ageOutputId2.value = this.value">
+                            <label id = "confg-label" class="inp-range range-3">Tamanho do Storage</label>
+                            <p id = "config-out-p"><output id="ageOutputId3">20</output> GB</p>
+                            <input type="range" min="20" max="500" step="20" value="20" name="qstg" class = "slider" id="qstg" oninput="ageOutputId3.value = this.value">
+                            <label id = "confg-label" class="inp-range range-4">Largura de Banda</label>
+                            <p id = "config-out-p"><output id="ageOutputId4">1</output> GBits</p>
+                            <input type="range" min="100" max="1000" step="50" value="100" name="qtran" class = "slider" id="qtran" oninput="ageOutputId4.value = this.value">   
+                        </div>
+                        <p id = "rotulos-campos">Lista de Softwares</p>
+                        <div id="listaSw">
+    
+                        </div>
+                        <p id = "rotulos-campos">Observações: <input type="text" size = "50" id="txtObs"></p>
+                    </form>
+                </div>
+                <div class = "col-2">
+                </div>
+            </div>
+        </div>
+            <div class = "row" id = "row-tres-altura">
+                <div class = "col-12" id = col-total>
+                    <hr>
+                    <p id = "pTotal"><output id="total">R$ 0,00</output> /hr</p>
+                    <hr>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col-12" id = "col-button">
+                    <button class="btn btn-outline-success" type="button" onclick="enviarPedido();">Enviar Pedido</button>
+                    <button class="btn btn-sm btn-outline-secondary" type="button" onclick = "cancelar();">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    <!-- Optional JavaScript -->
+    <script type="text/javascript" src="js/novopedido.js"> </script>
+    
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>

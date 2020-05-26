@@ -5,13 +5,14 @@ img{
     padding-top: 10px;
     padding-bottom: 10px;
 }
-div{
-    text-align: center;
+*div{
+    border: black solid 1px;
 }
 .div-banner{
     background-color: rgba(207, 207, 207, 0.404);
 }
 h1{
+    text-align: center;
     font-weight: bold;
     padding-top: 30px;
     text-shadow: 5px 5px 10px rgb(107, 107, 107) ;

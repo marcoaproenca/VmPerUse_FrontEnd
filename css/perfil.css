@@ -5,13 +5,16 @@
     min-height: 320px;
 }
 #row-tres-altura{
-    min-height: 450px;
+    min-height: 350px;
 }
 #row-rodape-altura{
     min-height: 150px;
 }
 #col-width{
     min-width: 5%;
+}
+#col-button{
+    padding-left: 10px;
 }
 #personal{
     text-align: left;
@@ -63,4 +66,11 @@ h3{
 .btn-outline-secondary:focus, .btn-outline-secondary.focus {
     -webkit-box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
             box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+}
+td.details-control {
+    background: url('details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('details_close.png') no-repeat center center;
 }
