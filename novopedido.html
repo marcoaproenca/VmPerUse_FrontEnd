@@ -15,13 +15,8 @@
             <div class = "row" id = "row-um-altura">
                 <div class = "col-12 div-banner">
                     <img src="imagens/itau-logo2.png" align = "left" width="100px">
-                    <h1>VM-Per-Use</h1>
+                    <h1>VM-Per-Use: Nova Solicitação</h1>
                 </div>
-            </div>
-            <div class = "row">
-                <hr>
-                <p id = "tituloPg">Nova Solicitação</p>
-                <hr>
             </div>
             <div class = "row d-flex" id = "row-dois-altura">
                 <div class = "col-2">
@@ -30,7 +25,7 @@
                     <form id="formPedido">
                         <p id = "rotulos-campos">Data do Pedido: <input type="text" id="txtData" readonly="true"></p>
                         <p id = "rotulos-campos">Itens de Configuração</p>
-                        <div class="slidecontainer">
+                        <div class="slidecontainer" id = "listaHw">
                             <label id = "confg-label" class="inp-range range-1">Quantidade de vCPUs</label>
                             <p id ="config-out-p"><output id="ageOutputId1">1</output> vCPU</p>
                             <input type="range" min="1" max="10" step="1" value="1" name="slider" class = "slider" id="processador" oninput="ageOutputId1.value = this.value">
@@ -42,7 +37,7 @@
                             <input type="range" min="20" max="500" step="20" value="20" name="slider" class = "slider" id="armazenamento" oninput="ageOutputId3.value = this.value">
                             <label id = "confg-label" class="inp-range range-4">Largura de Banda</label>
                             <p id = "config-out-p"><output id="ageOutputId4">100</output> GBits</p>
-                            <input type="range" min="100" max="1000" step="50" value="100" name="slider" class = "slider" id="rede" oninput="ageOutputId4.value = this.value">   
+                            <input type="range" min="100" max="1000" step="50" value="100" name="slider" class = "slider" id="rede" oninput="ageOutputId4.value = this.value">
                         </div>
                         <p id = "rotulos-campos">Lista de Softwares</p>
                         <div id="listaSw">

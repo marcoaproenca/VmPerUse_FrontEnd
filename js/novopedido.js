@@ -1,13 +1,16 @@
 function carregaitens(){
+    var userSTR = localStorage.getItem("vmuser");
+
+    if (!userSTR){ 
+       window.location= "index.html"; 
+    }
     fetch("http://localhost:8080/componente/")
       .then(res => res.json())
       .then(res => preencheCheckbox(res))
-    
-    
+        
     data = new Date();
     document.getElementById('txtData').value = data.getDate() + "/" + (data.getMonth()+1) + "/" + data.getFullYear();
 }
-
 
 function preencheCheckbox(res){
     localStorage.setItem("vmitens", JSON.stringify(res));
@@ -23,12 +26,10 @@ function preencheCheckbox(res){
     document.getElementById("listaSw").innerHTML = txtSoftwares;
 }
 
-
 function enviarPedido(){
     var txtData  = document.getElementById("txtData").value;
     var txtObs   = document.getElementById("txtObs").value;
     var vlrTotal = document.getElementById("total").value.toString().replace(",", ".");
-    console.log(vlrTotal);
     
     var userStr = localStorage.getItem("vmuser");
     var user = JSON.parse(userStr);
@@ -36,27 +37,57 @@ function enviarPedido(){
         data : txtData,
         observacoes : txtObs,
         valor : vlrTotal,
+        status : "Novo",
         solicitante: {
             id: user.id
         },
         itensSolicitacao:[]
     }
-
-    var listaSw = document.getElementsByName("softwares[]");
+    var itensStr = localStorage.getItem("vmitens");
+    var itens    = JSON.parse(itensStr);
     var cont=0;
+    var idHardware = -1;
+    
+    for (i=0; i<itens.length; i++){
+        switch(itens[i].nome){
+            case 'processador':
+                idHardware = parseInt(itens[i].id);
+
+                break;
+            case 'memoria':
+                idHardware = parseInt(itens[i].id);
+                break;
+            case 'armazenamento':
+                idHardware = parseInt(itens[i].id);
+                break;
+            case 'rede':
+                idHardware = parseInt(itens[i].id);
+                break;
+            default:
+                idHardware = -1;
+        }
+        if(idHardware > 0){
+            var itemHardware = {
+                    componente : { id: idHardware},
+                    quantidade: document.getElementById(itens[i].nome).value
+                }
+            msgSolicitacao.itensSolicitacao[cont] = itemHardware;
+            cont++;
+        }
+    }
+    var listaSw = document.getElementsByName("softwares[]");
+    
     for (i=0; i<listaSw.length; i++){
         if (listaSw[i].checked){
             var idSoftware = parseInt(listaSw[i].value);
             var itemSoftware = {
-               componente : { id: idSoftware,
-                              quantidade: 1
-                            }
+               componente : { id: idSoftware},
+               quantidade: 1
             }
             msgSolicitacao.itensSolicitacao[cont] = itemSoftware;
             cont++;
         }
     }
-    console.log(msgSolicitacao);
     var cabecalho = {
         method : 'POST',
         body : JSON.stringify(msgSolicitacao),
@@ -69,6 +100,7 @@ function enviarPedido(){
       .catch(err => GravaSolicitacaoErro(err));
     
 }
+
 function calculaCusto(){
     var itensStr = localStorage.getItem("vmitens");
     var itens    = JSON.parse(itensStr);
@@ -104,16 +136,15 @@ function calculaCusto(){
             }
         }
     }
-
     document.getElementById("total").innerHTML = custo.toLocaleString('pt-br', {minimumFractionDigits: 2});
 }
 function GravaSolicitacaoOk(res){
     alert("Solicitação gravada com sucesso.");
     console.log(res);    
-    //window.location = "perfil.html";
+    window.location = "perfil.html";
 }
 function GravaSolicitacaoErro(err){
-    alert("deu ruim");
+    alert("Não foi possível enviar sua solicitação, tente novamente.");
     console.log(err);
 }
 function cancelar(){

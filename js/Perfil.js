@@ -1,7 +1,10 @@
 var templateFoto    = '<img src="imagens/{{IMAGEMFOTO}}" width="200px" align = "right">';
-var templateBio     = '<h3> {{NOME}} </h3> <hr> <p><strong> RACF:</strong>    {{RACF}}</p> '+
-                                                ' <p><strong> SETOR: </strong>{{SETOR}}</p>'+
-                                                ' <p><strong> CARGO: </strong>{{TELEFONE}}</p>' ;
+var templateBio     = '<h3> {{NOME}} </h3> <hr>   <p><strong> RACF:      </strong>{{RACF}}</p> '+
+                                                ' <p><strong> FUNCIONAL: </strong>{{FUNCIONAL}}</p>'+
+                                                ' <p><strong> CARGO:     </strong>{{CARGO}}</p>'+
+                                                ' <p><strong> SETOR:     </strong>{{SETOR}}</p>'+
+                                                ' <p><strong> TELEFONE:  </strong>{{TELEFONE}}</p>'+
+                                                ' <p><strong> EMAIL:     </strong>{{EMAIL}}</p>';
 function carregaperfil(){
     var userSTR = localStorage.getItem("vmuser");
 
@@ -10,12 +13,15 @@ function carregaperfil(){
     }
     usuario = JSON.parse(userSTR);
     pedidos = usuario.pedidos;
-    console.log(usuario.id);
+
     document.getElementById("foto").innerHTML = templateFoto.replace("{{IMAGEMFOTO}}", usuario.linkfoto);
     document.getElementById("personal").innerHTML = templateBio.replace("{{NOME}}",usuario.nome)
                                                                .replace("{{RACF}}",usuario.racf)
+                                                               .replace("{{FUNCIONAL}}",usuario.funcional)
+                                                               .replace("{{CARGO}}",usuario.cargo)
                                                                .replace("{{SETOR}}",usuario.departamento)
-                                                               .replace("{{TELEFONE}}",usuario.cargo);
+                                                               .replace("{{TELEFONE}}",usuario.telefone)
+                                                               .replace("{{EMAIL}}",usuario.email)
 
     fetch("http://localhost:8080/solicitacao/" + usuario.id)
         .then(res => res.json())
@@ -33,11 +39,16 @@ function resSolicitacoes(res){
                     "className":      'details-control',
                     "orderable":      false,
                     "data":           null,
-                    "defaultContent": ''
+                    "defaultContent": '',
                 },
                 { "data": "numSolicitacao" },
                 { "data": "data" },
                 { "data": "observacoes" },
+                { "data": "status" },
+                { 
+                    "data": "valor",
+                    render: $.fn.dataTable.render.number( '.', ',', 2, 'R$ ' )
+                },
             ],
         "oLanguage": {
             "sLengthMenu": "Mostrar _MENU_ registros por página",
@@ -48,7 +59,7 @@ function resSolicitacoes(res){
             "sInfoEmpty": "Mostrando 0 a 0 de 0 registros",
             "sInfoFiltered": "(filtro aplicado em _MAX_ registros)",
             "sInfoPostFix": "",
-            "sInfoThousands": ".",
+            "sThousands": ".",
             "decimal" : ",",
             "sSearch": "Pesquisar:",
             "sUrl": "",
@@ -62,8 +73,6 @@ function resSolicitacoes(res){
         "pageLength": 5,
         "sScrollX": "100%",
         "sScrollXInner": "100%",
-        //"scrollY": "200px",
-        //"scrollCollapse": true,
         "aaSorting": [[1, "desc"]],
         "lengthMenu": [[5,10, 50, 100, -1], [5,10, 50, 100, "Todos"]]
     });
@@ -86,19 +95,32 @@ function resSolicitacoes(res){
     });
 }
 function format ( d ) {
-    console.log(d);
+    //console.log(d);
     var childRow =  '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
                         '<tr>' +
-                            '<th class="th-sm">Software</th>' +
-                            '<th class="th-sm">Fornecedor</th>' +
-                            '<th class="th-sm">Preço</th>' +
+                            '<th class="th-sm">Itens</th>' +
+                            '<th class="th-sm">Quantidade</th>' +
                         '</tr>'
+    var unidade = "";
     for(i = 0; i < d.itensSolicitacao.length; i++){
-        
+        switch(d.itensSolicitacao[i].componente.nome){
+            case 'processador':
+                unidade = " vCPU";
+                break;
+            case 'rede':
+                unidade = " Gbits";
+                break;
+            default:
+                if (d.itensSolicitacao[i].componente.tipo != "software"){
+                    unidade = " GB";
+                }
+                else{
+                    unidade = " Licença"
+                }
+        }
         var childRow = childRow + '<tr>'+
                                         '<td>' + d.itensSolicitacao[i].componente.nome + '</td>' +
-                                        '<td>' + d.itensSolicitacao[i].componente.fornecedor + '</td>' +
-                                        '<td>' + d.itensSolicitacao[i].componente.valor + '</td>' +
+                                        '<td>' + d.itensSolicitacao[i].quantidade + unidade + '</td>' +
                                     '</tr>';
     }
     childRow = childRow + '</table>';
