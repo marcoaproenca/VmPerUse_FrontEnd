@@ -3,6 +3,9 @@
     max-width: 400px;
     display: inline-block;
 }
+div{
+    text-align: center;
+}
 #form-logon{
     text-align: center;
 }

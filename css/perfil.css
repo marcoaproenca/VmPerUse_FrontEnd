@@ -68,9 +68,9 @@ h3{
             box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
 }
 td.details-control {
-    background: url('details_open.png') no-repeat center center;
+    background: url('../imagens/details_open.png') no-repeat center center;
     cursor: pointer;
 }
 tr.shown td.details-control {
-    background: url('details_close.png') no-repeat center center;
+    background: url('../imagens/details_close.png') no-repeat center center;
 }

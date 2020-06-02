@@ -8,13 +8,12 @@ function carregaitens(){
       .then(res => res.json())
       .then(res => preencheCheckbox(res))
         
-    data = new Date();
-    document.getElementById('txtData').value = data.getDate() + "/" + (data.getMonth()+1) + "/" + data.getFullYear();
+    document.getElementById('txtData').value = formataData(new Date());
 }
 
 function preencheCheckbox(res){
     localStorage.setItem("vmitens", JSON.stringify(res));
-    var templateCh = '<input type="checkbox" name="softwares[]" onchange="calculaCusto(this.name, this.value);" value="{{ID}}"> {{NOME}} <br/>';
+    var templateCh = '<input type="checkbox" name="softwares[]" value="{{ID}}"> {{NOME}} <br/>';
 
     var txtSoftwares = "";
     for (i=0; i<res.length; i++){
@@ -27,7 +26,8 @@ function preencheCheckbox(res){
 }
 
 function enviarPedido(){
-    var txtData  = document.getElementById("txtData").value;
+    var txtData  = document.getElementById('txtData').value;
+    console.log(txtData);
     var txtObs   = document.getElementById("txtObs").value;
     var vlrTotal = document.getElementById("total").value.toString().replace(",", ".");
     
@@ -50,17 +50,17 @@ function enviarPedido(){
     
     for (i=0; i<itens.length; i++){
         switch(itens[i].nome){
-            case 'processador':
+            case 'Processador':
                 idHardware = parseInt(itens[i].id);
 
                 break;
-            case 'memoria':
+            case 'Memoria':
                 idHardware = parseInt(itens[i].id);
                 break;
-            case 'armazenamento':
+            case 'Armazenamento':
                 idHardware = parseInt(itens[i].id);
                 break;
-            case 'rede':
+            case 'Rede':
                 idHardware = parseInt(itens[i].id);
                 break;
             default:
@@ -104,24 +104,24 @@ function enviarPedido(){
 function calculaCusto(){
     var itensStr = localStorage.getItem("vmitens");
     var itens    = JSON.parse(itensStr);
-    var qcpu = document.getElementById("processador").value;
-    var qmem = document.getElementById("memoria").value;
-    var qarm = document.getElementById("armazenamento").value;
-    var qrde = document.getElementById("rede").value;
+    var qcpu = document.getElementById("Processador").value;
+    var qmem = document.getElementById("Memoria").value;
+    var qarm = document.getElementById("Armazenamento").value;
+    var qrde = document.getElementById("Rede").value;
     var listaSw = document.getElementsByName("softwares[]");
     var custo = 0
     for (i=0; i<itens.length; i++){
         switch(itens[i].nome){
-            case 'processador':
+            case 'Processador':
                 custo = custo + itens[i].custo * qcpu;
                 break;
-            case 'memoria':
+            case 'Memoria':
                 custo = custo + itens[i].custo * qmem;
                 break;
-            case 'armazenamento':
+            case 'Armazenamento':
                 custo = custo + itens[i].custo * qarm;
                 break;
-            case 'rede':
+            case 'Rede':
                 custo = custo + itens[i].custo * qrde;
                 break;
         }
@@ -147,6 +147,20 @@ function GravaSolicitacaoErro(err){
     alert("Não foi possível enviar sua solicitação, tente novamente.");
     console.log(err);
 }
+function formataData(data){
+    let day, month, year;
+    day = String(data.getDate());
+    month = String(data.getMonth()+1);
+    year =String(data.getFullYear());
+    if(day.length != 2){
+        day = "0" + day;
+    }
+    if(month.length != 2){
+        month = "0" + month;
+    }
+    return day + "/" + month + "/" + year;
+}
+
 function cancelar(){
     window.location = "perfil.html";
 }

@@ -104,10 +104,10 @@ function format ( d ) {
     var unidade = "";
     for(i = 0; i < d.itensSolicitacao.length; i++){
         switch(d.itensSolicitacao[i].componente.nome){
-            case 'processador':
+            case 'Processador':
                 unidade = " vCPU";
                 break;
-            case 'rede':
+            case 'Rede':
                 unidade = " Gbits";
                 break;
             default:
